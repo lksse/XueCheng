@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xuecheng.manage_course.dao.CourseMapper">
+    <select id="findCourseBaseById" parameterType="java.lang.String"
+            resultType="com.xuecheng.framework.domain.course.CourseBase">
+        select * from course_base where id = #{id}
+    </select>
+    <select id="findCourseList" resultType="com.xuecheng.framework.domain.course.CourseBase">
+        select * from course_base
+    </select>
+    <select id="findCourseListInfo" resultType="com.xuecheng.framework.domain.course.CourseInfo">
+        select * from course_base
+    </select>
+    <insert id="addCourseBase" parameterType="com.xuecheng.framework.domain.course.CourseBase">
+        insert into course_base("naem","user","mt",) {#name}
+    </insert>
+
+
+    <select id="getCategory" parameterType="String" resultType="com.xuecheng.framework.domain.course.ext.CategoryNode">
+        WITH recursive t1 as (
+    SELECT * from category WHERE id = #{id}
+	union all
+	SELECT category.* from category INNER JOIN t1 on t1.id = category.parentid
+    )
+SELECT * from t1 ORDER BY t1.id,t1.orderby
+    </select>
+</mapper>

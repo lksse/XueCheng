@@ -1,0 +1,13 @@
+server:
+    port: 31002           #端口
+spring:
+    application:
+      name: xc‐service‐manage‐cms
+    data:
+      mongodb:
+        uri: mongodb://root:root@localhost:27017
+        database: xc_cms
+    freemarker:
+      cache: false          #关闭模板缓存，方便测试
+      template_update_dalay: 0          #检查模板更新延迟时间，设置为0表示立即检查，如果时间大于0会有缓存不方便进行模板测试
+
